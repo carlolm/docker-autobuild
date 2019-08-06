@@ -1,12 +1,6 @@
 #!/usr/bin/env sh
 
-# This is so we can get the commit into the build log of a Dangerfile runner
-# These come from https://docs.docker.com/docker-cloud/builds/advanced/
+# Get the build time stamp
+$BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-# For debugging all env vars
-printenv
-
-#  Convert the location "/Dockerfile" to "Dockerfile"
-# FILE=$(echo -n $BUILD_PATH | tail -c +2)
-
-docker build --build-arg COMMIT=$GIT_TAG --build-arg BRANCH=$SOURCE_BRANCH --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` -t $IMAGE_NAME -f Dockerfile .
+docker build --build-arg COMMIT=$GIT_TAG --build-arg BRANCH=$SOURCE_BRANCH --build-arg BUILD_DATE=$BUILD_DATE -t $IMAGE_NAME -f Dockerfile .
