@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Get the build time stamp
-$BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 echo "Branch:     $SOURCE_BRANCH"
 echo "Commit:     $GIT_TAG"
